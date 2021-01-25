@@ -1,0 +1,20 @@
+{
+  "name": "standort-backend",
+  "version": "1.0.0",
+  "description": "This is the group project for Yana, Milo and Bram!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mr0cket/standort-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mr0cket/standort-backend/issues"
+  },
+  "homepage": "https://github.com/Mr0cket/standort-backend#readme"
+}
