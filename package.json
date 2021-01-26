@@ -25,6 +25,8 @@
   "homepage": "https://github.com/Mr0cket/standort-backend#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "internal-ip": "^6.2.0",
+    "morgan": "^1.10.0",
     "pg": "^8.5.1",
     "sequelize": "^6.4.0",
     "sequelize-cli": "^6.2.0"
