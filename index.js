@@ -1,9 +1,7 @@
 const express = require("express");
-const {PORT} = require("./config/constants");
-const feedByLocationRouter = require("./routers/feedByLocation");
+const cors = require("cors");
 
 const app = express();
-const cors = require("cors");
 const jsonParser = express.json();
 const logMiddleware = require("morgan");
 // const authMiddleWare = require("./auth/middleware");
@@ -22,6 +20,7 @@ app.use(logMiddleware("dev")); // level of verboseness
 // Import routers
 const postsRouter = require("./routes/posts");
 const authRouter = require("./routes/auth");
+const feedByLocationRouter = require("./routes/feedByLocation");
 
 // Routes
 app.use("/posts", postsRouter);
@@ -43,7 +42,7 @@ const internalIp = require("internal-ip").v4.sync();
 const { PORT } = require("./config/constants");
 app.listen(PORT, () =>
   console.log(`listening on:
-    local:  localhost:${port}
-    network:    ${internalIp}:${port}
+    local:  localhost:${PORT}
+    network:    ${internalIp}:${PORT}
     `)
 );
