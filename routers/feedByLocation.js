@@ -16,7 +16,7 @@ router.get('/posts/:location', async (req, res) => {
                 }
             });
             const comments = await Comments.findAll({where: {postId: posts.map(post => post.id)}});
-            console.log(comments);
+            
             let newPosts = [];
 
             posts.forEach((post) => {
