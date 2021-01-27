@@ -18,7 +18,7 @@ router.post("/", auth, async (req, res, next) => {
       tags,
       location,
     });
-    res.send(newPost.dataValues);
+    res.send({ ...newPost.dataValues, user: req.user });
   } catch (e) {
     console.log(`[posts]sequelize error: ${e.message}`);
     next(e);
