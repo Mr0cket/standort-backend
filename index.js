@@ -21,10 +21,12 @@ app.use(logMiddleware("dev")); // level of verboseness
 const postsRouter = require("./routes/posts");
 const authRouter = require("./routes/auth");
 const feedByLocationRouter = require("./routes/feedByLocation");
+const addCommentRouter = require("./routes/addComment");
 
 // Routes
 app.use("/posts", postsRouter);
 app.use(feedByLocationRouter);
+app.use(addCommentRouter);
 app.use("/", authRouter);
 
 // API test endpoint
