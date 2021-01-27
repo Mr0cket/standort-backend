@@ -14,7 +14,13 @@ router.get('/posts/:location', async (req, res) => {
                     required: true
                 }
             });
-            const comments = await Comments.findAll({where: {postId: posts.map(post => post.id)}});
+
+            const comments = await Comments.findAll({
+                where: {postId: posts.map(post => post.id)},
+                include: {
+                    model: Users,
+                    required: true
+                }});
             
             let newPosts = [];
 
