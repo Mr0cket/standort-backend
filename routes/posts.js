@@ -1,13 +1,15 @@
 const router = require("express").Router();
 const Post = require("../models").post;
+const auth = require("../auth/middleware");
 // For all requests related to posts
 
 // GET /posts
 
 // POST /posts
-router.post("/", async (req, res, next) => {
+router.post("/", auth, async (req, res, next) => {
   // for later: picture, votes, location
-  const { title, message, tags, userId, location = 1 } = req.body;
+  const { title, message, tags, location } = req.body;
+  const userId = req.user.id;
   try {
     const newPost = await Post.create({
       userId,
