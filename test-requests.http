@@ -1,0 +1,27 @@
+### location from My coordinates
+GET http://api.positionstack.com/v1/reverse?access_key=74c7cfd668969a6090ad706cfba0ccd1&query=52.373150200000005,4.8781668
+
+### Sea area
+GET http://api.positionstack.com/v1/reverse?access_key=74c7cfd668969a6090ad706cfba0ccd1&query=65.02605,-176.47574
+
+### 
+GET http://api.positionstack.com/v1/reverse?access_key=74c7cfd668969a6090ad706cfba0ccd1&query=52.1262152,5.0906546
+
+- if locality exists, use locality, region, else use country.
+- e.g: locality 
+
+GET /location?lattitude="",longitude=""
+
+- backend gives the client the location
+- If you are in the Amsterdam location, 
+- response: "Amsterdam", 
+- "Noord-Holland", "Netherlands"
+- if location is "Amsterdam", your feed won't include posts made in "Noord-Holland" vice-versa for Netherlands
+
+When you login/ start session: 
+- Browser checks your location, sends it to backend
+- backend gives posts that match your location?
+
+GET /posts?location=Amsterdam
+
+backend matches those coordinates
