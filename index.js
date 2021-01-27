@@ -23,9 +23,9 @@ const authRouter = require("./routes/auth");
 const feedByLocationRouter = require("./routes/feedByLocation");
 
 // Routes
+app.use("/", authRouter);
 app.use("/posts", postsRouter);
 app.use(feedByLocationRouter);
-app.use("/", authRouter);
 
 // API test endpoint
 app.get("/pancake", (req, res) => {
