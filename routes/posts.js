@@ -8,7 +8,7 @@ const auth = require("../auth/middleware");
 // POST /posts
 router.post("/", auth, async (req, res, next) => {
   // for later: picture, votes, location
-  const { title, message, tags, location } = req.body;
+  const { title, message, tags, location, picture} = req.body;
   const userId = req.user.id;
   try {
     const newPost = await Post.create({
@@ -17,6 +17,7 @@ router.post("/", auth, async (req, res, next) => {
       message,
       tags,
       location,
+      picture
     });
     res.send({ ...newPost.dataValues, user: req.user });
   } catch (e) {
