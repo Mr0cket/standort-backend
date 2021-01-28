@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   post.init(
     {
       userId: { type: DataTypes.INTEGER, references: { model: "users", key: "id" } },
+      title: { type: DataTypes.STRING, allowNull: false },
       location: DataTypes.STRING,
       votes: DataTypes.INTEGER,
       message: DataTypes.STRING(500),

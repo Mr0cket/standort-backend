@@ -24,10 +24,10 @@ const feedByLocationRouter = require("./routes/feedByLocation");
 const addCommentRouter = require("./routes/addComment");
 
 // Routes
+app.use("/", authRouter);
 app.use("/posts", postsRouter);
 app.use(feedByLocationRouter);
 app.use(addCommentRouter);
-app.use("/", authRouter);
 
 // API test endpoint
 app.get("/pancake", (req, res) => {
