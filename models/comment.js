@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       comment.belongsTo(models.post);
+      comment.belongsTo(models.user);
     }
   }
   comment.init(

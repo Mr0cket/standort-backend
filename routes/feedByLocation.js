@@ -15,20 +15,10 @@ router.get("/posts/:location", async (req, res) => {
           required: true,
           attributes: ["name", "id", "profilePic", "homeLocation"],
         },
-        Comments,
+        Comments, // may need to include Users model in comments
       ],
     });
-    // const comments = await Comments.findAll({where: {postId: posts.map(post => post.id)}});
 
-    /*             let newPosts = [];
-
-            posts.forEach((post) => {
-                newPosts.push({
-                    "post": post,
-                    "comments": comments.filter(comment => comment.postId === post.id)
-                })
-            });
- */
     const parsedPosts = posts.map((post) => post.get({ plain: true }));
     res.send(parsedPosts);
   } catch (error) {
