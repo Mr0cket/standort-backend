@@ -1,6 +1,5 @@
 const express = require("express");
 const cors = require("cors");
-const { positionApi } = require("./config/constants");
 const app = express();
 const jsonParser = express.json();
 const logMiddleware = require("morgan");
@@ -11,23 +10,9 @@ if (process.env.DELAY) {
     setTimeout(() => next(), parseInt(process.env.DELAY));
   });
 }
-// app.use(cors());
+app.use(cors());
 
 // proxy for positionStack requests
-app.use(
-  "/position/forward",
-  proxy(
-    (req) =>
-      `http://api.positionstack.com/v1/forward?access_key=${req.query.access_key}&query=${req.query.query}`
-  )
-);
-app.use(
-  "/position/reverse",
-  proxy(
-    (req) =>
-      `http://api.positionstack.com/v1/reverse?access_key=${req.query.access_key}&query=${req.query.query}`
-  )
-);
 
 // Middleware
 app.use(jsonParser);
@@ -38,9 +23,11 @@ const postsRouter = require("./routes/posts");
 const authRouter = require("./routes/auth");
 const feedByLocationRouter = require("./routes/feedByLocation");
 const addCommentRouter = require("./routes/addComment");
+const positionRouter = require("./routes/position");
 
 // Routes
 app.use("/", authRouter);
+app.use("/position", positionRouter);
 app.use("/posts", postsRouter);
 app.use(feedByLocationRouter);
 app.use(addCommentRouter);
