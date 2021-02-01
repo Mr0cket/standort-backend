@@ -1,19 +1,35 @@
 const express = require("express");
 const cors = require("cors");
-
+const { positionApi } = require("./config/constants");
 const app = express();
 const jsonParser = express.json();
 const logMiddleware = require("morgan");
-// const authMiddleWare = require("./auth/middleware");
+const proxy = require("express-http-proxy");
 
 if (process.env.DELAY) {
   app.use((req, res, next) => {
     setTimeout(() => next(), parseInt(process.env.DELAY));
   });
 }
+// app.use(cors());
+
+// proxy for positionStack requests
+app.use(
+  "/position/forward",
+  proxy(
+    (req) =>
+      `http://api.positionstack.com/v1/forward?access_key=${req.query.access_key}&query=${req.query.query}`
+  )
+);
+app.use(
+  "/position/reverse",
+  proxy(
+    (req) =>
+      `http://api.positionstack.com/v1/reverse?access_key=${req.query.access_key}&query=${req.query.query}`
+  )
+);
 
 // Middleware
-app.use(cors());
 app.use(jsonParser);
 app.use(logMiddleware("dev")); // level of verboseness
 
